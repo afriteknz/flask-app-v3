@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'apps/flask-app-v3/**'
+      # - 'apps/flask-app-v3/**'
       - '.github/workflows/docker-image-CI.yaml'
   # pull_request:
   #   branches: [ "main" ]
@@ -34,8 +34,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: apps/flask-app-v3/
-          file: apps/flask-app-v3/Dockerfile
+          context: .
+          file: Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
